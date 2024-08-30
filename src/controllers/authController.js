@@ -31,7 +31,7 @@ exports.register = async (req, res) => {
             },
         };
 
-        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' }, (err, token) => {
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: process.env.JWT_TIME_EXPIRED }, (err, token) => {
             if (err) throw err;
             res.status(201).json(new ApiResponse(201, 'Created', { token }));
         });
@@ -66,7 +66,7 @@ exports.login = async (req, res) => {
             },
         };
 
-        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' }, (err, token) => {
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: process.env.JWT_TIME_EXPIRED }, (err, token) => {
             if (err) throw err;
             res.status(200).json(new ApiResponse(200, 'OK', { token }));
         });
