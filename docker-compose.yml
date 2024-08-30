@@ -1,0 +1,10 @@
+services:
+  mongo-db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: umap
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+    volumes:
+      - ./mongo:/data/db
+    network_mode: host
