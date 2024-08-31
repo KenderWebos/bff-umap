@@ -1,10 +1,11 @@
+version: '3'
 services:
-  mongo-db:
-    image: mongo
-    restart: always
+  mi-api-node:
+    build: .
+    ports:
+      - "3000:3000"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: umap
-      MONGO_INITDB_ROOT_PASSWORD: 123456
+      - NODE_ENV=production
     volumes:
-      - ./mongo:/data/db
-    network_mode: host
+      - ./:/app
+    restart: unless-stopped
